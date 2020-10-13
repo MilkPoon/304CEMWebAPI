@@ -1,0 +1,70 @@
+nav, .navbar{
+  width: 100%;
+  border-radius: 0px;
+}
+
+.good {
+  width: 200px;
+  margin-right: 10px;
+}
+
+.good img {
+  width: 100px;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.good a {
+  font-size: 14px;
+}
+
+.price {
+  color: red;
+}
+
+#login, #register, #edit {
+  padding-top: 100px;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.breadcrumb {
+  text-align: left;
+}
+
+.comment-item {
+  margin-top: 10px;
+  border: solid 1px rgb(233, 228, 228);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comment-item p {
+  margin-top: 10px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #101010;
+  color: white;
+  height: 30px;
+  line-height: 30px;
+}
+
+#view {
+  margin: auto;
+}
+
+#list {
+  overflow: scroll;
+  height: calc(100vh - 140px);
+}
+
+body {
+  overflow: hidden;
+}

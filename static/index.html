@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<head>
+  <title>Homework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/304cem.css">
+</head>
+<body>
+  <div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="javascript: open('index')">
+            Shopping
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="javascript: open('favorite')">Favorite</a></li>
+            <li><a href="javascript: open('cart')">Shopping Cart</a></li>
+            <li><a href="javascript: open('order')">Order</a></li>
+          </ul>
+          <ul id="logined" class="nav navbar-nav navbar-right">
+            <li><a href="javascript: open('edit')" id="showUsername"></a></li>
+            <li><a href="javascript: loginout()">Login Out</a></li>
+          </ul>
+          <ul id="loginout" class="nav navbar-nav navbar-right">
+            <li><a href="javascript: open('login')">Login</a></li>
+            <li><a href="javascript: open('register')">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="tip" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+      <strong>Danger!</strong> Please Login.
+    </div>
+    <div id="view" class="container" style="display: none;">
+      <ol class="breadcrumb">
+        <li><a href="javascript: open('index')">Home</a></li>
+        <li id="header-view" class="active"></li>
+      </ol>
+      <div id="list" style="display: flex; flex-direction: row;flex-wrap: wrap;justify-content: flex-start;"></div>
+    </div>
+    <div id="login">
+      <form method="post" action="/login">
+        <ol class="breadcrumb">
+          <li><a href="javascript: open('index')">Home</a></li>
+          <li class="active">Login</li>
+        </ol>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input id="login-username" type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-lock"></i>
+          </span>
+          <input id="login-password" type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1">
+        </div>
+      </form>
+      <br/>
+      <div id="login-tip" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+        <strong>Error!</strong> Better check yourself, you're not looking too good.
+      </div>
+      <br/>
+      <a href="javascript:login()" class="btn btn-primary" role="button">Login</a>
+      <a href="javascript:reset()" class="btn btn-default" role="button">Reset</a>
+    </div>
+    <div id="register" style="display: none;">
+      <form method="post" action="/register">
+        <ol class="breadcrumb">
+          <li><a href="javascript: open('index')">Home</a></li>
+          <li class="active">Register</li>
+        </ol>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input id="register-username" type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-lock"></i>
+          </span>
+          <input id="register-password" type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-lock"></i>
+          </span>
+          <input id="register-password1" type="password" class="form-control" name="password1" placeholder="Password" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-envelope"></i>
+          </span>
+          <input id="register-email" type="text" class="form-control" name="email" placeholder="Email Address" aria-describedby="basic-addon1">
+        </div>
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-phone-alt"></i>
+          </span>
+          <input id="register-phone" type="text" class="form-control" name="phone" placeholder="Phone Number" aria-describedby="basic-addon1">
+        </div>
+      </form>
+      <br/>
+      <div id="register-tip" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+        <strong>Error!</strong> Better check yourself, you're not looking too good.
+      </div>
+      <br/>
+      <a href="javascript:register()" class="btn btn-primary" role="button">Register</a>
+      <a href="javascript:reset()" class="btn btn-default" role="button">Reset</a>
+    </div>
+  </div>
+  <div id="edit" style="display: none;">
+    <form method="post" action="/register">
+      <ol class="breadcrumb">
+        <li><a href="javascript: open('index')">Home</a></li>
+        <li class="active">Edit</li>
+      </ol>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i>
+        </span>
+        <input id="edit-username" type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1" disabled>
+      </div>
+      <br/>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <input id="edit-password" type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1">
+      </div>
+      <br/>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <input id="edit-password1" type="password" class="form-control" name="password1" placeholder="Password" aria-describedby="basic-addon1">
+      </div>
+      <br/>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-envelope"></i>
+        </span>
+        <input id="edit-email" type="text" class="form-control" name="email" placeholder="Email Address" aria-describedby="basic-addon1">
+      </div>
+      <br/>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="edit-glyphicon glyphicon-phone-alt"></i>
+        </span>
+        <input id="edit-phone" type="text" class="form-control" name="phone" placeholder="Phone Number" aria-describedby="basic-addon1">
+      </div>
+    </form>
+    <br/>
+    <div id="edit-tip" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+      <strong>Error!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <br/>
+    <a href="javascript:edit()" class="btn btn-primary" role="button">Submit</a>
+    <a href="javascript:reset()" class="btn btn-default" role="button">Reset</a>
+  </div>
+  <footer>
+    &copy;2020-now
+  </footer>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/304cem.js"></script>
+</body>
